@@ -265,5 +265,19 @@ public class Board {
 		System.out.println(toPrint);
 
 	}// Fin printingBoard()
+	
+	public int getFliesALive() {
+		int counter = 0;
+		
+		for(int i = 0; i < this.gameBoard.length; i++) {
+			for(int j = 0; j < this.gameBoard.length; j++) {
+				if(isThereFlyHere(i, j)) {
+					counter++;
+				}
+			}
+		}
+		
+		return counter;
+	}
 
 }
