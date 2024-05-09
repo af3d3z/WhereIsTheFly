@@ -50,54 +50,47 @@ public class Main {
 		/* Scanner */
 		Scanner scMain = new Scanner(System.in);
 
-		/**
-		 * Ask the player if they want to play
-		 */
-		String response = "";
-
 		/* Build */
 		game = new Board(difficulty);
 
-		// Print the title and ask the player if they want to play
+		String response = "";
+
 		System.out.println(TITLE);
 		System.out.println("Welcome player!");
 		System.out.println("Are you ready to catch some flies? [Y/n]");
 		response = scMain.nextLine();
 
-		// If they want to play
 		if (!response.equalsIgnoreCase("n")) {
 			// "clear terminal"
 			System.out.println("\n\n\n");
 
 			/* Main game loop */
 			do {
-				// Print game board
+
 				game.printingBoard();
 
-				// Ask next hit position
-				System.out.println("Where would you want to hit?: ");
+				System.out.println("Where would you want to hit?: (Y,X)");
 
-				System.out.println("I axis:");
+				System.out.println("Y?");
 				posI = scMain.nextInt();
+				scMain.nextLine();
 
-				System.out.println("J axis:");
+				System.out.println("X?");
 				posJ = scMain.nextInt();
+				scMain.nextLine();
 
-				// Try to catch a fly
 				caught = game.catchFly(posI, posJ);
 
-				// If a fly gets caught
 				if (caught) {
-					System.out.println("Fly caught !!!");
+					System.out.println("Fly cought !!!");
 				} else {
 					System.out.println("You missed !");
 				}
 
-				// While there are still flies in the board
-			} while (game.getFliesAlive() > 0);
+			} while (game.getFliesALive() > 0);
 		}
 
-		System.out.println("You caught all the flies ฅ^•.•^ฅ !!");
+		System.out.println("You cought all the flies ฅ^•.•^ฅ !!");
 		scMain.close();
 	}
 

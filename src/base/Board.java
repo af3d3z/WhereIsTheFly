@@ -244,30 +244,48 @@ public class Board {
 	 */
 	public void printingBoard() {
 
+		/* Counter: cell number */
+		int count = 1;
+
 		/* String to print */
-		String toPrint = "";
+		String toPrint = "\u001B[33mY AXIS\u001B[0m\n";
 
 		/* Lets go through the I axis */
 		for (int i = 0; i < this.gameBoard.length; i++) {
-
+			toPrint += "\u001B[33m" + i + "\u001B[0m ";
 			/* Now, through the J axis */
 			for (int j = 0; j < this.gameBoard[i].length; j++) {
 
-				toPrint += "[" + i + "," + j + "]";
+				toPrint += "█ ";
+
+				count += 1;
 
 			} // Fin FOR --> Axis J
-
-			toPrint += "\n";
+			toPrint += "\n\n";
 
 		} // Fin FOR --> Axis I
-
+		toPrint +=  (this.gameBoard[0].length < 10) ?  "\u001B[33mX " : "\u001B[33mX  ";
+		for (int x = 0; x < this.gameBoard[0].length; x++) {
+			toPrint += x + " ";
+		}
+		toPrint += "\u001B[0m";
 		// Printing
 		System.out.println(toPrint);
 
 	}// Fin printingBoard()
-	
-	public int getFliesAlive() {
-		return flyArray.size();
+
+	public int getFliesALive() {
+		int counter = 0;
+
+		for (int i = 0; i < this.gameBoard.length; i++) {
+			for (int j = 0; j < this.gameBoard.length; j++) {
+				if (isThereFlyHere(i, j)) {
+					counter++;
+				}
+			}
+		}
+
+		return counter;
 	}
 
 }
