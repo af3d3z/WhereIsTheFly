@@ -1,5 +1,7 @@
 package base;
 
+import java.util.Arrays;
+
 import base.board.items.BoardItems;
 
 /**
@@ -24,6 +26,11 @@ public class Fly extends BoardItems {
 	 * Name of the fly
 	 */
 	private String name = "";
+
+	@Override
+	public String toString() {
+		return "Fly [nameList=" + Arrays.toString(nameList) + ", healthPoints=" + healthPoints + ", name=" + name + "]";
+	}
 
 	/**
 	 * modifies the healthpoints of the fly

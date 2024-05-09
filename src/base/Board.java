@@ -91,7 +91,7 @@ public class Board {
 	 * @return thereIsFly True if there's indeed a fly or false if not
 	 */
 	public boolean isThereFlyHere(int posI, int posJ) {
-
+		
 		/* PCC */
 		/* Boolean to return */
 		boolean thereIsFly = false;
@@ -253,7 +253,7 @@ public class Board {
 			/* Now, through the J axis */
 			for (int j = 0; j < this.gameBoard[i].length; j++) {
 
-				toPrint += "[" + i + "," + (char) ('a' + j) + "]";
+				toPrint += "[" + i + "," + j + "]";
 
 			} // Fin FOR --> Axis J
 

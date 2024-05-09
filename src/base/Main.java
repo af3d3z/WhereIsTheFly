@@ -15,11 +15,11 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		final String TITLE = " _ _ _ _                  _     \n" + "| | | | |_ ___ ___ ___   |_|___ \n"
+		final String TITLE = "\u001B[1m\u001B[35m _ _ _ _                  _     \n" + "| | | | |_ ___ ___ ___   |_|___ \n"
 				+ "| | | |   | -_|  _| -_|  | |_ -|\n" + "|_____|_|_|___|_| |___|  |_|___|\n"
 				+ " _____ _          _____ _       \n" + "|_   _| |_ ___   |   __| |_ _   \n"
 				+ "  | | |   | -_|  |   __| | | |  \n" + "  |_| |_|_|___|  |__|  |_|_  |  \n"
-				+ "                         |___|  \n";
+				+ "                         |___|  \n\u001B[0m";
 		
 
 		/* Fields */
@@ -33,10 +33,6 @@ public class Main {
 		 */
 		int difficulty = 1;
 
-		/**
-		 * State of the game flag, it is true while the game continues
-		 */
-		boolean flag = true;
 
 		/**
 		 * Flag if a fly has been caught
@@ -59,7 +55,6 @@ public class Main {
 		/* Build */
 		game = new Board(difficulty);
 		
-		String position = "";
 		String response = "";
 		
 		System.out.println(TITLE);
@@ -75,30 +70,25 @@ public class Main {
 
 				game.printingBoard();
 				
-				System.out.println("Where would you want to hit?: ");// Todo: tell the user that the format is <<I,J>>
-				position = scMain.nextLine();
-				posI = Integer.parseInt(response.split(",")[0]);
-				posJ = Integer.parseInt(response.split(",")[1]) - 65;
-				
+				System.out.println("Where would you want to hit?: ");
 
-				System.out.println("Golpe I?");
+				System.out.println("I axis:");
 				posI = scMain.nextInt();
 
-				System.out.println("Golpe J?");
+				System.out.println("J axis:");
 				posJ = scMain.nextInt();
 
 				caught = game.catchFly(posI, posJ);
 
 				if (caught) {
-					System.out.println("Fly Hit");
+					System.out.println("Fly cought !!!");
 				} else {
-					System.out.println("Miss");
+					System.out.println("You missed !");
 				}
 
-				System.out.println("Seguir?");
-				flag = scMain.nextBoolean();
 
-			} while (flag);
+			//} while (game.getFliesAlive() > 0);
+			} while (true);
 		}
 		
 		scMain.close();
